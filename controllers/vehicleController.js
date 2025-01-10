@@ -38,6 +38,26 @@ export const getVehicles = async (req, res) => {
   }
 };
 
+export const getVehicleById = async (req, res) => {
+  try {
+    const { vehicleId } = req.params;
+
+    if (!vehicleId) {
+      return res.status(400).json({ error: "vehicle ID is required" });
+    }
+
+    const vehicle = await Vehicle.findById(vehicleId);
+
+    if (!vehicle) {
+      return res.status(404).json({ error: "vehicle not found" });
+    }
+
+    res.json(vehicle);
+  } catch (error) {
+    res.status(500).json({ error: error.message || "Internal Server Error" });
+  }
+};
+
 // Update a vehicle
 export const updateVehicle = async (req, res) => {
   try {

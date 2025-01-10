@@ -36,6 +36,26 @@ export const getProperties = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+export const getPropertiById = async (req, res) => {
+  try {
+    const { propertyId } = req.params;
+
+    if (!propertyId) {
+      return res.status(400).json({ error: "Property ID is required" });
+    }
+
+    const properties = await Property.findById(propertyId);
+
+    if (!properties) {
+      return res.status(404).json({ error: "Property not found" });
+    }
+
+    res.json(properties);
+  } catch (error) {
+    res.status(500).json({ error: error.message || "Internal Server Error" });
+  }
+};
+
 
 export const updateProperty = async (req, res) => {
   try {
