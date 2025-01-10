@@ -18,5 +18,8 @@ const fileFilter = (req, file, cb) => {
     cb(new Error('Invalid file type. Only JPG, JPEG, and PNG are allowed.'))
   }
 }
+const maxSize = 5 * 1024 * 1024; // Limit each file to 5 MB
 
-export default  multer({ storage, fileFilter })
+export default  multer({ storage, fileFilter , limits: {
+  fileSize: maxSize, // Limit file size
+}, })

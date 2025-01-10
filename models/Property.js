@@ -66,3 +66,7 @@ const propertySchema = new mongoose.Schema({
 }, { timestamps: true });
 
 export default mongoose.model('Property', propertySchema);
+
+
+
+

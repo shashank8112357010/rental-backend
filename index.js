@@ -5,8 +5,11 @@ import dotenv from 'dotenv';
 import propertyRoutes from './routes/propertyRoutes.js';
 import vehicleRoutes from './routes/vehicleRoutes.js';
 import bookingRoutes from './routes/bookingRoutes.js';
+import dashboardRoutes from './routes/dashboardRoutes.js';
+
 import userRoutes from './routes/userRoutes.js';
 import path from 'path'
+import bodyParser from "body-parser"
 import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -14,19 +17,28 @@ dotenv.config();
 
 
 
+
 const app = express();
 
-app.use('/rental/rental_uploads', express.static(path.join(__dirname, 'rental_uploads')))
+
 
 
 app.use(cors());
 app.use(express.json());
+app.use(bodyParser.json({ limit: '50mb' })); // Adjust limit as needed
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
+
+
+
+app.use('/rental/rental_uploads', express.static(path.join(__dirname, 'rental_uploads')))
 app.get('/rental/test', (req, res) => res.send('Rental Server is UP'))
 // Routes
 app.use('/rental/api/property', propertyRoutes);
 app.use('/rental/api/vehicles', vehicleRoutes);
 app.use('/rental/api/bookings', bookingRoutes);
 app.use('/rental/api/user', userRoutes);
+app.use('/rental/api/dashboard', dashboardRoutes);
+
 
 
 
