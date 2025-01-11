@@ -95,7 +95,7 @@ export const changePassword = async (req, res) => {
     try {
         const { oldPassword, newPassword } = req.body;
         const { userId } = req.user;  // Assuming you have a middleware to authenticate the user and add userId to req.user
-
+console.log(req.user , "change");
         // Find the user by userId
         const user = await User.findById(userId);
 
