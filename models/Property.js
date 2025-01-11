@@ -23,6 +23,10 @@ const propertySchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  locationLink: {
+    type: String,
+    required: true
+  },
   images: [{
     type: String,
     required: true
@@ -62,11 +66,14 @@ const propertySchema = new mongoose.Schema({
     required: function() {
       return this.type === 'FLAT'; // Only required if property type is FLAT
     }
+  },
+  furnishType: {
+    type: String,
+    enum: ['SemiFurnished', 'Unfurnished', 'FullyFurnished'],
+    required: function() {
+      return this.type === 'FLAT'; // Only required if property type is FLAT
+    }
   }
 }, { timestamps: true });
 
 export default mongoose.model('Property', propertySchema);
-
-
-
-

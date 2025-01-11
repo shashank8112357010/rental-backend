@@ -19,10 +19,15 @@ const vehicleSchema = new mongoose.Schema({
     required: true,
     min: 0
   },
-  stock : {
+  pricePerMonth: {
+    type: Number,
+    required: true,
+    min: 0
+  },
+  stock: {
     type: String,
     required: true,
-    default : "0"
+    default: "0"
   },
   images: [{
     type: String,
@@ -35,6 +40,17 @@ const vehicleSchema = new mongoose.Schema({
   owner: {
     type: String,
     required: true
+  },
+  availabilityTime: {
+    type: [String],
+    enum: ['hourly', 'weekly', 'monthly'],
+    required: true,
+    validate: {
+      validator: function (v) {
+        return Array.isArray(v) && v.length > 0;
+      },
+      message: 'At least one availability time must be specified.'
+    }
   }
 }, { timestamps: true });
 

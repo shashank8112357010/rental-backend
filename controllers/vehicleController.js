@@ -12,7 +12,6 @@ dotenv.config();
 // Create a vehicle
 export const createVehicle = async (req, res) => {
   try {
-    console.log(req.files , "reaching");
     const validatedData = await validateVehicle({
       ...req.body,
       images: req.files 
