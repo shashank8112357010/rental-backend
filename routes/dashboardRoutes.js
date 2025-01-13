@@ -6,6 +6,10 @@ import Booking from "../models/Booking.js";
 import Property from "../models/Property.js";
 import Vehicle from "../models/Vehicle.js";
 
+import Enquire from "../models/Enquire.js";
+
+import Requirement from "../models/Requirement.js";
+
 import { authenticate, isAdmin } from '../middleware/auth.js';
 
 // Route to fetch counts and last updated timestamps of various collections
@@ -24,6 +28,12 @@ router.get('/count', authenticate, isAdmin, async (req, res) => {
         const vehicleCount = await Vehicle.countDocuments();
         const vehicleLastUpdated = await Vehicle.findOne().sort({ updatedAt: -1 }).select('updatedAt');
 
+        const enquireCount = await Enquire.countDocuments();
+        const enquireLastUpdated = await Enquire.findOne().sort({ updatedAt: -1 }).select('updatedAt');
+
+
+        const requirementCount = await Requirement.countDocuments();
+        const requirementLastUpdated = await Requirement.findOne().sort({ updatedAt: -1 }).select('updatedAt');
         // Return the counts and last updated timestamps as a JSON response
         return res.status(200).json({
             success: true,
@@ -32,6 +42,9 @@ router.get('/count', authenticate, isAdmin, async (req, res) => {
                 booking: { count: bookingCount, lastUpdated: bookingLastUpdated ? bookingLastUpdated.updatedAt : null },
                 property: { count: propertyCount, lastUpdated: propertyLastUpdated ? propertyLastUpdated.updatedAt : null },
                 vehicle: { count: vehicleCount, lastUpdated: vehicleLastUpdated ? vehicleLastUpdated.updatedAt : null },
+                vehicle: { count: vehicleCount, lastUpdated: vehicleLastUpdated ? vehicleLastUpdated.updatedAt : null },
+                enquire: { count: enquireCount, lastUpdated: enquireLastUpdated ? enquireLastUpdated.updatedAt : null },
+                requirement: { count: requirementCount, lastUpdated: requirementLastUpdated ? requirementLastUpdated.updatedAt : null }
             }
         });
     } catch (error) {
