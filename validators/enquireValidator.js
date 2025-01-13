@@ -9,6 +9,7 @@ const enquiryValidationSchema = Joi.object({
     }),
     serviceId: Joi.string().required(),
     itemType: Joi.string().valid('Property', 'Vehicle').required(),
+    enquire: Joi.string().required(),
     status: Joi.string().valid('OPEN', 'CLOSED'),
   });
   

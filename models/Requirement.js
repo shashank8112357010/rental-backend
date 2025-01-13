@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const enquireSchema = new mongoose.Schema({
+const requirementSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true
@@ -13,17 +13,8 @@ const enquireSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  serviceId: {
-    type: mongoose.Schema.Types.ObjectId,
-    refPath: 'itemType',
-    required: true
-  },
-  itemType: {
-    type: String,
-    enum: ['Property', 'Vehicle'],
-    required: true
-  },
-  enquire: {
+ 
+  requirement: {
     type: String,
     required: true
   },
@@ -34,4 +25,4 @@ const enquireSchema = new mongoose.Schema({
   }
 }, { timestamps: true });
 
-export default mongoose.model('Enquiry', enquireSchema);
+export default mongoose.model('Requirement', requirementSchema);
