@@ -5,6 +5,8 @@ import dotenv from 'dotenv';
 import propertyRoutes from './routes/propertyRoutes.js';
 import vehicleRoutes from './routes/vehicleRoutes.js';
 import bookingRoutes from './routes/bookingRoutes.js';
+import enquireRoutes from './routes/enquireRoutes.js';
+
 import dashboardRoutes from './routes/dashboardRoutes.js';
 
 import userRoutes from './routes/userRoutes.js';
@@ -36,6 +38,8 @@ app.get('/rental/test', (req, res) => res.send('Rental Server is UP'))
 app.use('/rental/api/property', propertyRoutes);
 app.use('/rental/api/vehicles', vehicleRoutes);
 app.use('/rental/api/bookings', bookingRoutes);
+app.use('/rental/api/enquire', enquireRoutes);
+
 app.use('/rental/api/user', userRoutes);
 app.use('/rental/api/dashboard', dashboardRoutes);
 

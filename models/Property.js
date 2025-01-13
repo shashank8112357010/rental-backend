@@ -42,6 +42,10 @@ const propertySchema = new mongoose.Schema({
     type: String,
     default: true
   },
+  isBooked: {
+    type: String,
+    default: false
+  },
   // Specific for PG
   pgCategory: {
     type: String,

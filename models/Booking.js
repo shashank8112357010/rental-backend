@@ -8,7 +8,7 @@ const bookingSchema = new mongoose.Schema({
   },
   itemType: {
     type: String,
-    enum: ['PROPERTY', 'VEHICLE'],
+    enum: ['Property', 'Vehicle'],
     required: true
   },
   item: {
@@ -23,6 +23,10 @@ const bookingSchema = new mongoose.Schema({
   },
   appointmentDate: {
     type: Date,
+    required: true
+  },
+  preferredTime: {
+    type: String,
     required: true
   }
 }, { timestamps: true });
