@@ -1,5 +1,3 @@
-
-
 import Help from '../models/Help.js';
 
 // Create a new help request

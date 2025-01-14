@@ -1,5 +1,3 @@
-// HelpModel.js
-
 import mongoose from 'mongoose';
 
 const helpSchema = new mongoose.Schema({
@@ -30,7 +28,7 @@ const helpSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-} ,{ timestamps: true });
+}, { timestamps: true });
 
 
 export default mongoose.model('Help', helpSchema);
