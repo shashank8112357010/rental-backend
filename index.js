@@ -7,7 +7,7 @@ import vehicleRoutes from './routes/vehicleRoutes.js';
 import bookingRoutes from './routes/bookingRoutes.js';
 import enquireRoutes from './routes/enquireRoutes.js';
 import requirementRoutes from './routes/requirementRoutes.js';
-
+import helpRoutes from './routes/helpRoutes.js';
 
 import dashboardRoutes from './routes/dashboardRoutes.js';
 
@@ -42,6 +42,8 @@ app.use('/rental/api/vehicles', vehicleRoutes);
 app.use('/rental/api/bookings', bookingRoutes);
 app.use('/rental/api/enquire', enquireRoutes);
 app.use('/rental/api/requirement', requirementRoutes);
+app.use('/rental/api/help', helpRoutes);
+
 
 
 app.use('/rental/api/user', userRoutes);
