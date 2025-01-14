@@ -1,11 +1,11 @@
-import help from "../models/HelpModel.js";
+import Help from "../models/HelpModel.js";
 
 // Create a new help request
 export const createHelpRequest = async (req, res) => {
   try {
     const { bookingId,  message } = req.body;
 
-    const newHelpRequest = new help({
+    const newHelpRequest = new Help({
       bookingId,
       userId : req.user.userId,
       message,
