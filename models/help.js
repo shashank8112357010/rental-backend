@@ -32,6 +32,6 @@ const helpSchema = new mongoose.Schema({
   },
 } ,{ timestamps: true });
 
-const Help = mongoose.model('Help', helpSchema);
 
-export default Help;
+export default mongoose.model('Help', helpSchema);
+
