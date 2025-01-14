@@ -1,4 +1,4 @@
-// helpController.js
+
 
 import Help from '../models/Help.js';
 
