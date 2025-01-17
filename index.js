@@ -8,13 +8,12 @@ import bookingRoutes from './routes/bookingRoutes.js';
 import enquireRoutes from './routes/enquireRoutes.js';
 import requirementRoutes from './routes/requirementRoutes.js';
 import helpRoutes from './routes/helpRoutes.js';
-
 import dashboardRoutes from './routes/dashboardRoutes.js';
-
 import userRoutes from './routes/userRoutes.js';
 import path from 'path'
 import bodyParser from "body-parser"
 import { fileURLToPath } from 'url';
+import eBookRoutes from './routes/eBookRoutes.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 dotenv.config();
@@ -43,7 +42,7 @@ app.use('/rental/api/bookings', bookingRoutes);
 app.use('/rental/api/enquire', enquireRoutes);
 app.use('/rental/api/requirement', requirementRoutes);
 app.use('/rental/api/help', helpRoutes);
-
+app.use('/rental/api/ebook', eBookRoutes);
 
 
 app.use('/rental/api/user', userRoutes);

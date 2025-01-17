@@ -11,14 +11,14 @@ let storage = multer.diskStorage({
 })
 
 const fileFilter = (req, file, cb) => {
-  const allowedMimeTypes = ['image/jpeg', 'image/png', 'image/jpg']
+  const allowedMimeTypes = ['image/jpeg', 'image/png', 'image/jpg' , 'application/pdf',]
   if (allowedMimeTypes.includes(file.mimetype)) {
     cb(null, true)
   } else {
     cb(new Error('Invalid file type. Only JPG, JPEG, and PNG are allowed.'))
   }
 }
-const maxSize = 5 * 1024 * 1024; // Limit each file to 5 MB
+const maxSize = 6 * 1024 * 1024; // Limit each file to 5 MB
 
 export default  multer({ storage, fileFilter , limits: {
   fileSize: maxSize, // Limit file size
