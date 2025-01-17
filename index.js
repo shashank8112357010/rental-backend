@@ -10,6 +10,9 @@ import requirementRoutes from './routes/requirementRoutes.js';
 import helpRoutes from './routes/helpRoutes.js';
 import dashboardRoutes from './routes/dashboardRoutes.js';
 import userRoutes from './routes/userRoutes.js';
+import purchaseRoutes from './routes/purchaseRoutes.js';
+import formRoutes from './routes/formRoutes.js';
+
 import path from 'path'
 import bodyParser from "body-parser"
 import { fileURLToPath } from 'url';
@@ -43,6 +46,10 @@ app.use('/rental/api/enquire', enquireRoutes);
 app.use('/rental/api/requirement', requirementRoutes);
 app.use('/rental/api/help', helpRoutes);
 app.use('/rental/api/ebook', eBookRoutes);
+app.use('/rental/api/purchase', purchaseRoutes);
+app.use('/rental/api/form', formRoutes);
+
+
 
 
 app.use('/rental/api/user', userRoutes);

@@ -7,22 +7,23 @@ import {
   deleteEBook,
 } from '../controllers/eBookController.js';
 import upload from "../common/multer.js";
+import { authenticate, isAdmin } from '../middleware/auth.js';
 
 const router = express.Router();
 
 // Create a new eBook
-router.post('/', upload.single('content'), createEBook);
+router.post('/', authenticate , isAdmin ,  upload.single('content'), createEBook);
 
 // Get all eBooks
-router.get('/', getAllEBooks);
+router.get('/',  getAllEBooks);
 
 // Get a specific eBook by ID
 router.get('/:id', getEBookById);
 
 // Update an eBook by ID
-router.put('/:id', updateEBook);
+router.put('/:id', authenticate , isAdmin , updateEBook);
 
 // Delete an eBook by ID
-router.delete('/:id', deleteEBook);
+router.delete('/:id', authenticate , isAdmin , deleteEBook);
 
 export default router;
