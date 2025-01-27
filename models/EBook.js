@@ -1,30 +1,72 @@
 import mongoose from 'mongoose';
 
-const eBookSchema = new mongoose.Schema({
-  title: {
-    type: String,
-    required: true
-  },
-  description: {
-    type: String,
-    required: true
-  },
-  price: {
-    type: Number, // Changed to Number for numerical operations
-    required: true
-  },
- 
-  content: {
-    type: String,
-    required: true,
-    validate: {
-      validator: function (value) {
-        // Ensure the file has the correct extension
-        return /\.(pdf|doc|docx)$/i.test(value);
-      },
-      message: (props) => `${props.value} is not a valid file type. Only PDF or DOC/DOCX are allowed.`
+// Subject Schema
+const subjectSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+      unique: true // Ensures each subject name is unique
     }
   },
-}, { timestamps: true });
+  { timestamps: true }
+);
 
-export default mongoose.model('eBook', eBookSchema);
+// Module Schema
+const moduleSchema = new mongoose.Schema(
+
+  {
+    subjectId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Subject', // Reference the Subject model
+      required: true
+    },
+    title: {
+      type: String,
+      required: true
+    }
+
+  },
+  { timestamps: true }
+);
+
+// eBook Schema
+const eBookSchema = new mongoose.Schema(
+  {
+    title: {
+      type: String,
+      required: true
+    },
+    description: {
+      type: String,
+      required: true
+    },
+    doc: {
+      type: String,
+      required: true
+    },
+    price: {
+      type: Number,
+      required: true
+    },
+    subject: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Subject', // Reference the Subject model
+      required: true
+    },
+    moduleId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Module', // Reference the Subject model
+      required: true
+    },
+  },
+  { timestamps: true }
+);
+
+// Export Models
+const Subject = mongoose.model('Subject', subjectSchema);
+const Module = mongoose.model('Module', moduleSchema);
+
+const eBook = mongoose.model('eBook', eBookSchema);
+
+export { Subject, eBook, Module };
