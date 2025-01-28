@@ -11,7 +11,9 @@ import helpRoutes from './routes/helpRoutes.js';
 import dashboardRoutes from './routes/dashboardRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import purchaseRoutes from './routes/purchaseRoutes.js';
-import formRoutes from './routes/formRoutes.js';
+
+import academicRoutes from './routes/AcademicResearchRoutes.js';
+import plagiarismRoutes from './routes/PlagiarismRoutes.js';
 
 import path from 'path'
 import bodyParser from "body-parser"
@@ -47,7 +49,9 @@ app.use('/rental/api/requirement', requirementRoutes);
 app.use('/rental/api/help', helpRoutes);
 app.use('/rental/api/ebook', eBookRoutes);
 app.use('/rental/api/purchase', purchaseRoutes);
-app.use('/rental/api/form', formRoutes);
+app.use('/rental/api/academic', academicRoutes );
+app.use('/rental/api/plagiarism', plagiarismRoutes);
+
 
 
 
