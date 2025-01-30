@@ -11,6 +11,8 @@ import helpRoutes from './routes/helpRoutes.js';
 import dashboardRoutes from './routes/dashboardRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import purchaseRoutes from './routes/purchaseRoutes.js';
+import internshipRoutes from './routes/internshipRoutes.js';
+
 
 import academicRoutes from './routes/AcademicResearchRoutes.js';
 import plagiarismRoutes from './routes/PlagiarismRoutes.js';
@@ -51,6 +53,8 @@ app.use('/rental/api/ebook', eBookRoutes);
 app.use('/rental/api/purchase', purchaseRoutes);
 app.use('/rental/api/academic-research', academicRoutes );
 app.use('/rental/api/plagiarism-test', plagiarismRoutes);
+app.use('/rental/api/internship', internshipRoutes);
+
 
 
 
