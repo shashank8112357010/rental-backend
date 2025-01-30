@@ -44,7 +44,12 @@ export const createModule = async (req, res) => {
     if (!subject) {
       return res.status(404).json({ message: 'Subject not found' });
     }
-   console.log(subjectId , "subjectId");
+    const module = await Module.findOne({ title , subjectId  });
+    if (module) {
+      return res.status(404).json({ message: 'Module with this name already exists' });
+    }
+   
+
     const newModule = new Module({ subjectId, title });
     await newModule.save();
 
@@ -103,28 +108,28 @@ export const getAllEBooks = async (req, res) => {
 };
 
 export const getEBooksByModuleId = async (req, res) => {
-    try {
-      const { moduleId } = req.params;
-  
-      // Validate moduleId
-      const moduleExists = await Module.findById(moduleId);
-      if (!moduleExists) {
-        return res.status(404).json({ message: 'Module not found' });
-      }
-  
-      // Fetch eBooks for the given moduleId
-      const eBooks = await eBook.find({ moduleId }).populate('subject moduleId', 'name title');
-  
-      if (!eBooks || eBooks.length === 0) {
-        return res.status(404).json({ message: 'No eBooks found for the specified module' });
-      }
-  
-      res.status(200).json(eBooks);
-    } catch (error) {
-      res.status(500).json({ error: error.message });
+  try {
+    const { moduleId } = req.params;
+
+    // Validate moduleId
+    const moduleExists = await Module.findById(moduleId);
+    if (!moduleExists) {
+      return res.status(404).json({ message: 'Module not found' });
     }
-  };
-  
+
+    // Fetch eBooks for the given moduleId
+    const eBooks = await eBook.find({ moduleId }).populate('subject moduleId', 'name title');
+
+    if (!eBooks || eBooks.length === 0) {
+      return res.status(404).json({ message: 'No eBooks found for the specified module' });
+    }
+
+    res.status(200).json(eBooks);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
 
 export const getEBookById = async (req, res) => {
   try {

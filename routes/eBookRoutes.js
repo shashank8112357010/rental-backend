@@ -37,7 +37,11 @@ router.get('/', getAllEBooks);
 // Get a specific eBook by ID
 router.get('/:id', getEBookById);
 // Get eBooks by moduleId
+
+
 router.get('/module/:moduleId', getEBooksByModuleId);
+
+
 // Update an eBook by ID
 router.put('/:id', authenticate, isAdmin, upload.single('content'), updateEBook);
 // Delete an eBook by ID
