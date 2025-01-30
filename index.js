@@ -49,8 +49,8 @@ app.use('/rental/api/requirement', requirementRoutes);
 app.use('/rental/api/help', helpRoutes);
 app.use('/rental/api/ebook', eBookRoutes);
 app.use('/rental/api/purchase', purchaseRoutes);
-app.use('/rental/api/academic', academicRoutes );
-app.use('/rental/api/plagiarism', plagiarismRoutes);
+app.use('/rental/api/academic-research', academicRoutes );
+app.use('/rental/api/plagiarism-test', plagiarismRoutes);
 
 
 

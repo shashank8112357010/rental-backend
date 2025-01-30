@@ -22,10 +22,6 @@ const academicResearchSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
-    areaOfResearch: {
-      type: String,
-      required: true,
-    },
     researchType: {
       type: String,
       enum: [
