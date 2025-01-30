@@ -30,10 +30,14 @@ export const createInternship = async (req, res) => {
 export const getActiveInternships = async (req, res) => {
   try {
     const currentDate = new Date();
-    const internships = await Internship.find({ deadline: { $gte: currentDate } });
 
-    res.status(200).json(internships);
+    const activeInternships = await Internship.find({
+      deadline: { $gte: currentDate }  // Only fetch non-expired internships
+    });
+
+    res.status(200).json(activeInternships);
   } catch (error) {
+    console.error("Error fetching active internships:", error);
     res.status(500).json({ error: error.message });
   }
 };
