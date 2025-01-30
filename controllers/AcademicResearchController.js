@@ -5,7 +5,7 @@ export const submitAcademicResearch = async (req, res) => {
     const formData = { ...req.body };
 
     // Validate required fields
-    if (!formData.wordCount || !formData.areaOfResearch || !formData.researchType) {
+    if (!formData.wordCount || !formData.researchType) {
       return res.status(400).json({ error: 'All fields are required for Academic Research' });
     }
 
@@ -21,7 +21,7 @@ export const submitAcademicResearch = async (req, res) => {
 export const getAcademicResearch = async (req, res) => {
   try {
     const forms = await AcademicResearch.find();
-    res.status(200).json(forms);
+    res.status(200).json({error : false  , success : true  , data  : forms});
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

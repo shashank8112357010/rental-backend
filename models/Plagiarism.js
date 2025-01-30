@@ -31,7 +31,7 @@ const plagiarismTestSchema = new mongoose.Schema(
     },
     checkType: {
       type: String,
-      enum: ['Plagiarism Check', 'AI Check', 'AI+ Check'], // Allowed check types
+      enum: ['Plagiarism Check', 'AI Check', 'AI+Check'], // Allowed check types
       required: true,
     },
     status: {

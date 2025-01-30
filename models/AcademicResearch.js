@@ -48,6 +48,15 @@ const academicResearchSchema = new mongoose.Schema(
       ],
       required: true,
     },
+    amount: {
+      type: Number,
+      required: true,
+    },
+    TransactionId: {
+      type: String,
+      required: false,
+      default : "razor pay"
+    },
     status: {
       type: String,
       enum: ['pending', 'completed'], // Allowed values

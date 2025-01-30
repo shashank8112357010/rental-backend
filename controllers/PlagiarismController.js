@@ -4,7 +4,7 @@ export const submitPlagiarismTest = async (req, res) => {
   try {
     const formData = {
       ...req.body,
-      file: req.file ? `${process.env.ServerUrl}/uploads/${req.file.filename}` : null,
+      file: req.file ? `${process.env.ServerUrl}/rental_uploads/${req.file.filename}` : null,
     };
 
     // Validate required fields
