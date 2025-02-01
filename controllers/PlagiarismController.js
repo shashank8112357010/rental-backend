@@ -2,6 +2,7 @@ import PlagiarismTest from '../models/Plagiarism.js';
 
 export const submitPlagiarismTest = async (req, res) => {
   try {
+    console.log(req.file);
     const formData = {
       ...req.body,
       file: req.file ? `${process.env.ServerUrl}/rental_uploads/${req.file.filename}` : null,
