@@ -11,7 +11,7 @@ import {
   deleteEBook,
   getEBooksByModuleId,
 } from '../controllers/eBookController.js';
-import upload from "../common/multer.js";
+import upload from "../common/multer.js";k
 import { authenticate, isAdmin } from '../middleware/auth.js';
 
 const router = express.Router();
@@ -20,6 +20,7 @@ const router = express.Router();
 // Create a new subject
 router.post('/subject', authenticate, isAdmin, createSubject);
 // Get all subjects
+
 router.get('/subject', getAllSubjects);
 
 // **Module Routes**

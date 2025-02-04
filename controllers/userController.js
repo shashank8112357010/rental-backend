@@ -62,7 +62,7 @@ export const loginUser = async (req, res) => {
 
             // Generate a JWT token
             const token = jwt.sign(
-                { userId: user._id, email: user.email , role : user.role},
+                { userId: user._id, email: user.email, role: user.role },
                 process.env.JWT_SECRET || 'your_secret_key',
                 { expiresIn: '1h' } // Token expires in 1 hour
             );
@@ -95,7 +95,7 @@ export const changePassword = async (req, res) => {
     try {
         const { oldPassword, newPassword } = req.body;
         const { userId } = req.user;  // Assuming you have a middleware to authenticate the user and add userId to req.user
-console.log(req.user , "change");
+       
         // Find the user by userId
         const user = await User.findById(userId);
 

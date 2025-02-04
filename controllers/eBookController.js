@@ -33,6 +33,7 @@ export const getAllSubjects = async (req, res) => {
   }
 };
 
+
 // **Modules**
 
 export const createModule = async (req, res) => {
@@ -208,3 +209,13 @@ export const deleteEBook = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+
+// i want something like that can have purchase api so that usr can buy e book can you do this  for me in the frontend backend and the dashboard 
+
+
+
+
+
+
+
