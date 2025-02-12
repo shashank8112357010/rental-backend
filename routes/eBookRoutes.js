@@ -11,7 +11,7 @@ import {
   deleteEBook,
   getEBooksByModuleId,
 } from '../controllers/eBookController.js';
-import upload from "../common/multer.js";k
+import upload from "../common/multer.js";
 import { authenticate, isAdmin } from '../middleware/auth.js';
 
 const router = express.Router();
